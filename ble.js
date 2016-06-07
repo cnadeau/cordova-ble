@@ -68,11 +68,11 @@ exports.startScan = function(uuids, success, fail) {
 	if ('function' == typeof uuids)
 	{
 		// No Service UUIDs specified.
-		exec(uuids, success, 'BLE', 'startScan', []);
+		exec(uuids, success, 'EVOTHINGS BLE', 'startScan', []);
 	}
 	else
 	{
-		exec(success, fail, 'BLE', 'startScan', [uuids]);
+		exec(success, fail, 'EVOTHINGS BLE', 'startScan', [uuids]);
 	}
 };
 
@@ -119,7 +119,7 @@ exports.startScan = function(uuids, success, fail) {
 evothings.ble.stopScan();
 */
 exports.stopScan = function() {
-	exec(null, null, 'BLE', 'stopScan', []);
+	exec(null, null, 'EVOTHINGS BLE', 'stopScan', []);
 };
 
 /** Connect to a remote device.
@@ -143,7 +143,7 @@ evothings.ble.connect(
 );
 */
 exports.connect = function(address, win, fail) {
-	exec(win, fail, 'BLE', 'connect', [address]);
+	exec(win, fail, 'EVOTHINGS BLE', 'connect', [address]);
 };
 
 /** Will be called whenever the device's connection state changes.
@@ -191,7 +191,7 @@ exports.connectionState = {
 evothings.ble.close(deviceHandle);
 */
 exports.close = function(deviceHandle) {
-	exec(null, null, 'BLE', 'close', [deviceHandle]);
+	exec(null, null, 'EVOTHINGS BLE', 'close', [deviceHandle]);
 };
 
 /** Fetch the remote device's RSSI (signal strength).
@@ -212,7 +212,7 @@ evothings.ble.rssi(
 );
 */
 exports.rssi = function(deviceHandle, win, fail) {
-	exec(win, fail, 'BLE', 'rssi', [deviceHandle]);
+	exec(win, fail, 'EVOTHINGS BLE', 'rssi', [deviceHandle]);
 };
 
 /** This function is called with an RSSI value.
@@ -244,7 +244,7 @@ evothings.ble.services(
 	});
 */
 exports.services = function(deviceHandle, win, fail) {
-	exec(win, fail, 'BLE', 'services', [deviceHandle]);
+	exec(win, fail, 'EVOTHINGS BLE', 'services', [deviceHandle]);
 };
 
 /**
@@ -299,7 +299,7 @@ evothings.ble.characteristics(
 	});
 */
 exports.characteristics = function(deviceHandle, serviceHandle, win, fail) {
-	exec(win, fail, 'BLE', 'characteristics', [deviceHandle, serviceHandle]);
+	exec(win, fail, 'EVOTHINGS BLE', 'characteristics', [deviceHandle, serviceHandle]);
 };
 
 /**
@@ -442,7 +442,7 @@ evothings.ble.descriptors(
 	});
 */
 exports.descriptors = function(deviceHandle, characteristicHandle, win, fail) {
-	exec(win, fail, 'BLE', 'descriptors', [deviceHandle, characteristicHandle]);
+	exec(win, fail, 'EVOTHINGS BLE', 'descriptors', [deviceHandle, characteristicHandle]);
 };
 
 /**
@@ -481,7 +481,7 @@ evothings.ble.readCharacteristic(
 	});
 */
 exports.readCharacteristic = function(deviceHandle, characteristicHandle, win, fail) {
-	exec(win, fail, 'BLE', 'readCharacteristic', [deviceHandle, characteristicHandle]);
+	exec(win, fail, 'EVOTHINGS BLE', 'readCharacteristic', [deviceHandle, characteristicHandle]);
 };
 
 /** Reads a descriptor's value from a remote device.
@@ -503,7 +503,7 @@ evothings.ble.readDescriptor(
 	});
 */
 exports.readDescriptor = function(deviceHandle, descriptorHandle, win, fail) {
-	exec(win, fail, 'BLE', 'readDescriptor', [deviceHandle, descriptorHandle]);
+	exec(win, fail, 'EVOTHINGS BLE', 'readDescriptor', [deviceHandle, descriptorHandle]);
 };
 
 /**
@@ -525,7 +525,7 @@ without specifying and additional information.
 * @example TODO: Add example.
 */
 exports.writeCharacteristic = function(deviceHandle, characteristicHandle, data, win, fail) {
-	exec(win, fail, 'BLE', 'writeCharacteristic', [deviceHandle, characteristicHandle, data.buffer]);
+	exec(win, fail, 'EVOTHINGS BLE', 'writeCharacteristic', [deviceHandle, characteristicHandle, data.buffer]);
 };
 
 /** Write a characteristic's value without response.
@@ -545,7 +545,7 @@ exports.writeCharacteristic = function(deviceHandle, characteristicHandle, data,
 * @param {failCallback} fail - Called if the operation fails.
 */
 exports.writeCharacteristicWithoutResponse = function(deviceHandle, characteristicHandle, data, win, fail) {
-	exec(win, fail, 'BLE', 'writeCharacteristicWithoutResponse', [deviceHandle, characteristicHandle, data.buffer]);
+	exec(win, fail, 'EVOTHINGS BLE', 'writeCharacteristicWithoutResponse', [deviceHandle, characteristicHandle, data.buffer]);
 };
 
 /** Write a descriptor's value to a remote device.
@@ -557,7 +557,7 @@ exports.writeCharacteristicWithoutResponse = function(deviceHandle, characterist
 * @example TODO: Add example.
 */
 exports.writeDescriptor = function(deviceHandle, descriptorHandle, data, win, fail) {
-	exec(win, fail, 'BLE', 'writeDescriptor', [deviceHandle, descriptorHandle, data.buffer]);
+	exec(win, fail, 'EVOTHINGS BLE', 'writeDescriptor', [deviceHandle, descriptorHandle, data.buffer]);
 };
 
 /** Request notification on changes to a characteristic's value.
@@ -586,7 +586,7 @@ evothings.ble.enableNotification(
 	});
 */
 exports.enableNotification = function(deviceHandle, characteristicHandle, win, fail) {
-	exec(win, fail, 'BLE', 'enableNotification', [deviceHandle, characteristicHandle]);
+	exec(win, fail, 'EVOTHINGS BLE', 'enableNotification', [deviceHandle, characteristicHandle]);
 };
 
 /** Disable notification of changes to a characteristic's value.
@@ -608,7 +608,7 @@ evothings.ble.disableNotification(
 	});
 */
 exports.disableNotification = function(deviceHandle, characteristicHandle, win, fail) {
-	exec(win, fail, 'BLE', 'disableNotification', [deviceHandle, characteristicHandle]);
+	exec(win, fail, 'EVOTHINGS BLE', 'disableNotification', [deviceHandle, characteristicHandle]);
 };
 
 /** i is an integer. It is converted to byte and put in an array[1].
@@ -619,7 +619,7 @@ exports.disableNotification = function(deviceHandle, characteristicHandle, win, 
 * @param {dataCallback} win - Called every time the value changes.
 */
 exports.testCharConversion = function(i, win) {
-	exec(win, null, 'BLE', 'testCharConversion', [i]);
+	exec(win, null, 'EVOTHINGS BLE', 'testCharConversion', [i]);
 };
 
 /** Resets the device's Bluetooth system.
@@ -632,7 +632,7 @@ exports.testCharConversion = function(i, win) {
 * @param {failCallback} fail
 */
 exports.reset = function(win, fail) {
-	exec(win, fail, 'BLE', 'reset', []);
+	exec(win, fail, 'EVOTHINGS BLE', 'reset', []);
 };
 
 /** Converts an ArrayBuffer containing UTF-8 data to a JavaScript String.
@@ -840,7 +840,7 @@ function gattServerCallbackHandler(winFunc, settings) {
 * @param {failCallback} fail
 */
 exports.peripheral.startGattServer = function(settings, win, fail) {
-	exec(gattServerCallbackHandler(win, settings), fail, 'BLE', 'startGattServer', [settings]);
+	exec(gattServerCallbackHandler(win, settings), fail, 'EVOTHINGS BLE', 'startGattServer', [settings]);
 };
 
 // GattSettings
@@ -911,7 +911,7 @@ exports.peripheral.startGattServer = function(settings, win, fail) {
 * @param {failCallback} fail
 */
 exports.peripheral.stopGattServer = function(win, fail) {
-	exec(win, fail, 'BLE', 'stopGattServer', []);
+	exec(win, fail, 'EVOTHINGS BLE', 'stopGattServer', []);
 };
 
 /** Sends a response to a read or write request.
@@ -922,7 +922,7 @@ exports.peripheral.stopGattServer = function(win, fail) {
 * @param {failCallback} fail
 */
 exports.peripheral.sendResponse = function(deviceHandle, requestId, data, win, fail) {
-	exec(win, fail, 'BLE', 'sendResponse', [deviceHandle, requestId, data.buffer]);
+	exec(win, fail, 'EVOTHINGS BLE', 'sendResponse', [deviceHandle, requestId, data.buffer]);
 }
 
 /** Sends a notification to a remote device that a characteristic's value has been updated.
@@ -933,7 +933,7 @@ exports.peripheral.sendResponse = function(deviceHandle, requestId, data, win, f
 * @param {failCallback} fail
 */
 exports.peripheral.notify = function(deviceHandle, characteristic, data, win, fail) {
-	exec(win, fail, 'BLE', 'notify', [deviceHandle, characteristic, data.buffer]);
+	exec(win, fail, 'EVOTHINGS BLE', 'notify', [deviceHandle, characteristic, data.buffer]);
 };
 
 /*	// never mind, just use close().
@@ -951,7 +951,7 @@ exports.closeClient = function(clientHandle, win, fail) {
 * @param {failCallback} fail
 */
 exports.peripheral.startAdvertise = function(settings, win, fail) {
-	exec(win, fail, 'BLE', 'startAdvertise', [settings]);
+	exec(win, fail, 'EVOTHINGS BLE', 'startAdvertise', [settings]);
 }
 
 /** Stops BLE advertise.
@@ -960,7 +960,7 @@ exports.peripheral.startAdvertise = function(settings, win, fail) {
 * @param {failCallback} fail
 */
 exports.peripheral.stopAdvertise = function(win, fail) {
-	exec(win, fail, 'BLE', 'stopAdvertise', []);
+	exec(win, fail, 'EVOTHINGS BLE', 'stopAdvertise', []);
 }
 
 // AdvertiseSettings
