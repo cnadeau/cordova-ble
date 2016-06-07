@@ -686,26 +686,32 @@ public class BLE
 						gattHandler.mNotifications.remove(characteristic);
 					}
 
-					// Get config descriptor.
-					BluetoothGattDescriptor configDescriptor = characteristic.getDescriptor(
-						UUID.fromString("00002902-0000-1000-8000-00805f9b34fb"));
-					if (configDescriptor == null) {
-						callbackContext.error("Could not get config descriptor");
-						gattHandler.process();
-						return;
-					}
+					// Ugly hack to be able to receive notifications from bluno
+					// and keep basic functionaly of other devices
+					try{
+						// Get config descriptor.
+						BluetoothGattDescriptor configDescriptor = characteristic.getDescriptor(
+							UUID.fromString("00002902-0000-1000-8000-00805f9b34fb"));
+						if (configDescriptor == null) {
+							// callbackContext.error("Could not get config descriptor");
+							// gattHandler.process();
+							// return;
+						}
 
-					// Set descriptor value.
-					byte[] descriptorValue = turnOn ?
-						BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE :
-						BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
-					configDescriptor.setValue(descriptorValue);
+						// Set descriptor value.
+						byte[] descriptorValue = turnOn ?
+							BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE :
+							BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE;
+						configDescriptor.setValue(descriptorValue);
 
-					// Write descriptor.
-					if (!gatt.writeDescriptor(configDescriptor)) {
-						callbackContext.error("Could not write config descriptor");
-						gattHandler.process();
-						return;
+						// Write descriptor.
+						if (!gatt.writeDescriptor(configDescriptor)) {
+							// callbackContext.error("Could not write config descriptor");
+							// gattHandler.process();
+							// return;
+						}
+					}catch(Exception e){
+
 					}
 
 					// Turn notification on or off.
